@@ -17,7 +17,7 @@ public class WorkModeListener implements Listener {
         WorkModeListener.pl = plugin;
     } 
 	
-	@EventHandler(priority = EventPriority.NORMAL)
+	@EventHandler(priority = EventPriority.LOW)
 	public void onEntityDamage(EntityDamageEvent event) {
 		if (event.isCancelled() || (event.getDamage() == 0)) return;
 		
