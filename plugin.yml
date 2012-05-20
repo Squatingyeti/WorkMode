@@ -1,0 +1,14 @@
+name: WorkMode
+main: net.yeticraft.squatingyeti.WorkMode.WorkMode
+version: 1.0
+description: >
+             WorkMode
+
+commands:
+  work:
+    description: puts admins and mods into a work mode 
+    usage: "Usage: '/work'"
+permissions:
+  work.use:
+    description: Allows a player to use WorkMode
+    default: op
