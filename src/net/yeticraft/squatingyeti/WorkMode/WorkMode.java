@@ -1,9 +1,7 @@
 package net.yeticraft.squatingyeti.WorkMode;
 
 import java.util.HashSet;
-import java.util.Set;
 import java.util.logging.Logger;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -16,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class WorkMode extends JavaPlugin {
 	Logger log = Logger.getLogger("Minecraft");
-	public Set<String> working = new HashSet<String>();
+	public HashSet<String> working = new HashSet<String>();
 
 	public void onEnable() {
 		log.info ("[WorkMode] has been enabled");
@@ -45,10 +43,17 @@ public class WorkMode extends JavaPlugin {
 		if (label.equalsIgnoreCase("work") && (args.length == 0)) {
 			player.sendMessage(ChatColor.DARK_PURPLE + "[WorkMode] " +ChatColor.GREEN+ "enabled!");
 			working.add(player.getName().toLowerCase());
+			if (working.contains(player.getName().toLowerCase())){
+				player.sendMessage("you are up in the hashset");
+			}
+			else{
+				player.sendMessage("you are NOT hashed");
+			}
 			player.performCommand("squat");
 			player.setAllowFlight(true);
 			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 6000, 0));
 			return true;
+
 		}
 		
 		if (label.equalsIgnoreCase("work") && (args.length == 1)) {

@@ -14,7 +14,7 @@ public class WorkModeListener implements Listener {
 	
 	public WorkModeListener(WorkMode plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
-        pl = plugin;
+        WorkModeListener.pl = plugin;
     } 
 	
 	@EventHandler(priority = EventPriority.NORMAL)
@@ -38,12 +38,12 @@ public class WorkModeListener implements Listener {
 			Player attackerPlayer = (Player) attacker;
 			attackerPlayer.sendMessage("You attacked another player!");
 		
-		if (!pl.working.contains(attackerPlayer.getName().toLowerCase()) || 
-				(!pl.working.contains(defenderPlayer.getName().toLowerCase()))){
+	
+		if (!pl.working.contains(attackerPlayer.getName().toLowerCase()) && !(pl.working.contains(defenderPlayer.getName().toLowerCase()))){
 			attackerPlayer.sendMessage("Not in the working set");
-			defenderPlayer.sendMessage("Not in the working set");
 			return;
 		}
+		
 		event.setCancelled(true);
 		event.setDamage(0);
 	}
